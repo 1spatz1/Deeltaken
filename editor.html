@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monaco Editor Example</title>
+    <!-- Include Monaco Editor CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/monaco-editor@latest/min/vs/editor/editor.main.css">
+    <!-- Include the JavaScript file for the custom element -->
+    <script src="/CodeBlock/monaco-editor.js"></script>
+    <style>
+        html, body, #container {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- Use the custom element -->
+    <monaco-editor value='console.log("Hello world!");' language="javascript" theme="vs-dark"></monaco-editor>
+
+    <!-- Include Monaco Editor loader -->
+    <!-- <script src="https://unpkg.com/monaco-editor@latest/min/vs/loader.js"></script> -->
+    <script>
+        // Optionally, you can place any additional JavaScript code here
+    </script>
+</body>
+</html>
