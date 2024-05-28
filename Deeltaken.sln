@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LXU", "LXU", "{CADB4C5A-1813-48EC-8B17-97E64E449EBB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnetapp", "LXU\csharp\dotnetapp.csproj", "{9013AD86-1368-4CA5-A887-0562D759D3AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9013AD86-1368-4CA5-A887-0562D759D3AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9013AD86-1368-4CA5-A887-0562D759D3AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9013AD86-1368-4CA5-A887-0562D759D3AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9013AD86-1368-4CA5-A887-0562D759D3AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9013AD86-1368-4CA5-A887-0562D759D3AB} = {CADB4C5A-1813-48EC-8B17-97E64E449EBB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2365D4B6-6071-4C54-85D3-D2032DCB0003}
+	EndGlobalSection
+EndGlobal

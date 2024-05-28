@@ -1,0 +1,62 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\spatzy\\source\\repos\\Deeltaken\\LXU\\csharp\\dotnetapp.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\spatzy\\source\\repos\\Deeltaken\\LXU\\csharp\\dotnetapp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\spatzy\\source\\repos\\Deeltaken\\LXU\\csharp\\dotnetapp.csproj",
+        "projectName": "dotnetapp",
+        "projectPath": "C:\\Users\\spatzy\\source\\repos\\Deeltaken\\LXU\\csharp\\dotnetapp.csproj",
+        "packagesPath": "C:\\Users\\spatzy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\spatzy\\source\\repos\\Deeltaken\\LXU\\csharp\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\spatzy\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

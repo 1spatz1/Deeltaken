@@ -1,6 +1,7 @@
 package utility
 
 import (
+	"bufio"
 	"context"
 	"fmt"
 	"os/exec"
@@ -90,20 +91,74 @@ func RunContainer(imageName string, isLocalImage bool, code string) (string, err
 
 	cmd = exec.Command("docker", "exec", containerID, "/source/script.sh")
 
-	// Run the command
-	buf := new(strings.Builder)
-	cmd.Stdout = buf
-	cmd.Stderr = buf
-
-	if err := cmd.Run(); err != nil {
-		println("Error running command", err.Error())
+	// Get the stdout and stderr pipes
+	stdout, err := cmd.StdoutPipe()
+	if err != nil {
+		println("Error creating stdout pipe", err.Error())
+		return "", err
+	}
+	stderr, err := cmd.StderrPipe()
+	if err != nil {
+		println("Error creating stderr pipe", err.Error())
 		return "", err
 	}
 
+	// Start the command before setting up stream reading
+	if err := cmd.Start(); err != nil {
+		println("Error starting command", err.Error())
+		return "", err
+	}
+
+	// Create a channel to collect the lines
+	lines := make(chan string)
+
+	// Create a WaitGroup to wait for the goroutines to finish
+	var wg sync.WaitGroup
+	wg.Add(2) // We have two goroutines
+
+	// Read stdout line by line
+	go func() {
+		defer wg.Done() // Decrement the WaitGroup counter when the goroutine finishes
+		scanner := bufio.NewScanner(stdout)
+		for scanner.Scan() {
+			fmt.Println("stdout:", scanner.Text()) // Print each line of stdout
+			lines <- scanner.Text()
+		}
+		println("finished stdout")
+	}()
+
+	// Read stderr line by line
+	go func() {
+		defer wg.Done() // Decrement the WaitGroup counter when the goroutine finishes
+		scanner := bufio.NewScanner(stderr)
+		for scanner.Scan() {
+			fmt.Println("stderr:", scanner.Text()) // Print each line of stderr
+			lines <- scanner.Text()
+		}
+		println("finished stderr")
+	}()
+
+	// Wait for the command to finish
+	if err := cmd.Wait(); err != nil {
+		println("Error waiting for command", err.Error())
+		return "", err
+	}
+	
+	// Wait for the goroutines to finish
+	wg.Wait()
+	println("passed wait")
+	// Now it's safe to close the lines channel
+	close(lines)
+
+	// Collect all lines into a single string
+	output := ""
+	for line := range lines {
+		output += line + "\n"
+	}
+
 	// Remove the header from the log output
-	output := buf.String()
 	if len(output) < 1 {
-		return "", fmt.Errorf("Error: No output")
+		return "", fmt.Errorf("error: No output")
 	}
 	output = strings.Trim(output, "\n")
 
